@@ -207,12 +207,12 @@ function clearScore() {
 *
 */
 function updateTimer() {
-  // TODO: Write your code here.
-  // hint: this code is provided to you in the instructions.
-  
+  if (time > 0){
+    time -= 1;
+    timerDisplay.textContent = time;
+  }
   return time;
 }
-
 /**
 *
 * Starts the timer using setInterval. For each 1000ms (1 second)
@@ -220,11 +220,9 @@ function updateTimer() {
 *
 */
 function startTimer() {
-  // TODO: Write your code here
-  // timer = setInterval(updateTimer, 1000);
+  timer = setInterval(updateTimer, 1000);
   return timer;
 }
-
 /**
 *
 * This is the event handler that gets called when a player
