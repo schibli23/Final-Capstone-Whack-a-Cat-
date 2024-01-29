@@ -193,9 +193,11 @@ function updateScore() {
 *
 */
 function clearScore() {
-  // TODO: Write your code here
-  // points = 0;
-  // score.textContent = points;
+  // set the points global variable to 0
+  points = 0;
+  // update score.textContent 
+  score.textContent = points;
+  // return points;
   return points;
 }
 
@@ -232,9 +234,11 @@ function startTimer() {
 *
 */
 function whack(event) {
-  // TODO: Write your code here.
-  // call updateScore()
-  return points;
+  console.log("whack!")
+  // call updateScore();
+  updateScore();
+  // return points;
+  return points
 }
 
 /**
@@ -243,10 +247,13 @@ function whack(event) {
 * for an example on how to set event listeners using a for loop.
 */
 function setEventListeners(){
-  // TODO: Write your code here
-
+  moles.forEach(
+    mole => mole.addEventListener('click', whack)
+  );
   return moles;
 }
+
+setEventListeners();
 
 /**
 *
