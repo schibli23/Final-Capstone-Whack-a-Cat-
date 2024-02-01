@@ -2,13 +2,13 @@ const holes = document.querySelectorAll('.hole');
 const moles = document.querySelectorAll('.mole');
 const startButton = document.querySelector('#start');
 // TODO: Add the missing query selectors:
-const score = document.querySelector('.score');
+const score = document.querySelector('#score');
  // Use querySelector() to get the score element
-const timerDisplay = document.querySelector('.timer');
+const timerDisplay = document.querySelector('#timer');
  // use querySelector() to get the timer element.
 
-let time = 0;
-let timer= 0;
+let time = 10;
+let timer;
 let lastHole = 0;
 let points = 0;
 let difficulty = "hard";
@@ -176,12 +176,9 @@ function toggleVisibility(hole){
 * for your implementation:
 *
 */
-function updateScore() {
-  // Increment the points global variable by 1 point
-  points ++ 1;
-  // Update score.textContent with points.
+function updateScore(){
+  points++;
   score.textContent = points;
-  // Return points;
   return points;
 }
 
@@ -213,6 +210,7 @@ function updateTimer() {
   }
   return time;
 }
+
 /**
 *
 * Starts the timer using setInterval. For each 1000ms (1 second)
@@ -223,6 +221,9 @@ function startTimer() {
   timer = setInterval(updateTimer, 1000);
   return timer;
 }
+
+startTimer();
+
 /**
 *
 * This is the event handler that gets called when a player
@@ -232,11 +233,13 @@ function startTimer() {
 *
 */
 function whack(event) {
-  console.log("whack!")
-  // call updateScore();
-  updateScore();
-  // return points;
-  return points
+  if (event && event.target) {
+    updateScore();
+    animateWhack(event.target);
+    return points;
+  } else {
+    console.error("Invalid or missing event object");
+  }
 }
 
 /**
@@ -245,13 +248,11 @@ function whack(event) {
 * for an example on how to set event listeners using a for loop.
 */
 function setEventListeners(){
-  moles.forEach(
-    mole => mole.addEventListener('click', whack)
-  );
+  moles.forEach((mole, index) => {
+    mole.addEventListener('click', whack)
+  });
   return moles;
 }
-
-setEventListeners();
 
 /**
 *
@@ -284,11 +285,24 @@ function stopGame(){
 */
 function startGame(){
   setDuration(10);
+  setEventListeners();
   showUp();
   return "game started";
 }
 
+/** Additional Animation 
+ * This is a function that will have an scaling effect when the moles is whacked
+*/
+function animateWhack(mole){
+  mole.classList.add('whacked');
+
+  setTimeout(() => {
+    mole.classList.remove('whacked');
+  }, 500);
+}
+
 startButton.addEventListener("click", startGame);
+
 
 
 // Please do not modify the code below.
