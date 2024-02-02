@@ -5,16 +5,11 @@ This Whack-a-Mole web game is the final capstone project for a web development p
 # Installation
 To get started with the game, follow these steps:
 
-Fork and clone this repository.
-Navigate to the project's folder.
-Run npm install to install dependencies.
-To run the unit tests, use npm test. Note that passing all tests is recommended but not required to complete the assignment.
+- Fork and clone this repository.
+- Navigate to the project's folder.
+- Run npm install to install dependencies.
+- To run the unit tests, use npm test. Note that passing all tests is recommended but not required to complete the assignment.
 
-# Files and Structure
-index.html: The HTML document that holds the game structure. Modify this file to pass the tests.
-src/styles.css: The CSS file for styling the game. You can make optional changes to enhance the appearance.
-src/index.js: The JavaScript file containing the game functionality. Modify this file to pass the tests.
-test/solution.test.js: Unit tests for the game.
 # User Stories
 # US-01 - Basic game structure
 Add a title to the game, surrounded by h1 tags. Example: <h1 id="title"> Whack-a-Mole </h1>
