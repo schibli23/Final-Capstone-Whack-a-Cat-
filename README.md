@@ -12,28 +12,28 @@ To get started with the game, follow these steps:
 
 # User Stories
 # US-01 - Basic game structure
-Add a title to the game, surrounded by h1 tags
-Add nine holes and moles to the grid in index.html.
-Define a start button in index.html.
-Use querySelector() to access elements in index.js.
+- Add a title to the game, surrounded by h1 tags
+- Add nine holes and moles to the grid in index.html.
+- Define a start button in index.html.
+- Use querySelector() to access elements in index.js.
 # US-02 - Basic game functionality: Randomness
-Implement randomInteger(min, max) function.
-Implement setDelay(difficulty) function.
-Implement chooseHole(holes) function.
+- Implement randomInteger(min, max) function.
+- Implement setDelay(difficulty) function.
+- Implement chooseHole(holes) function.
 # US-03 - Game flow
-Implement toggleVisibility(hole) function.
-Implement showAndHide(hole, delay) function.
-Implement showUp() function.
-Implement gameOver() function.
-Uncomment and implement startGame() function.
+- Implement toggleVisibility(hole) function.
+- Implement showAndHide(hole, delay) function.
+- Implement showUp() function.
+- Implement gameOver() function.
+- Uncomment and implement startGame() function.
 # US-04: Whack!
-Implement updateScore() function.
-Implement clearScore() function.
-Implement whack(event) function.
-Implement setEventListeners() function.
+- Implement updateScore() function.
+- Implement clearScore() function.
+- Implement whack(event) function.
+- Implement setEventListeners() function.
 # US-05: Timer
-Implement startTimer() function.
-Implement updateTimer() function.
+- Implement startTimer() function.
+- Implement updateTimer() function.
 
 # Acknowledgments
 This project is part of the web development certificate capstone for the web development program.
