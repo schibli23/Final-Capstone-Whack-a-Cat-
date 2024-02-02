@@ -75,7 +75,7 @@ function setDelay(difficulty) {
 function chooseHole(holes) {
   // TODO: Write your code here.
   // generate a random integer from 0 to 8 and assign it to an index variable
-  let index = Math.floor(Math.random() * holes.length);
+  let index = Math.floor(Math.random() * 2);
   // get a random hole with the random index (e.g. const hole = holes[index])
   const hole = holes[index];
   // if hole === lastHole call chooseHole(holes) again.
@@ -111,14 +111,13 @@ function chooseHole(holes) {
 *
 */
 function gameOver() {
-  // TODO: Write your code here
- if (time > 0){
- const timeoutId = showUp();
- return timeoutId;
- } else {
-  stopGame();
-  return "game stopped"
- }
+  if(time > 0){
+    let timeoutId = showUp();
+    return timeoutId;
+  } else {
+    let gameStopped = stopGame();
+    return gameStopped;
+  }
 }
 
 /**
@@ -143,14 +142,14 @@ function showUp() {
 * the timeoutID
 *
 */
-function showAndHide(hole, delay){
-  // TODO: call the toggleVisibility function so that it adds the 'show' class.
+function showAndHide(hole, delay) {
   toggleVisibility(hole);
+
   const timeoutID = setTimeout(() => {
-    // TODO: call the toggleVisibility function so that it removes the 'show' class when the timer times out.
-    toggleVisibility(hole); 
+    toggleVisibility(hole);
     gameOver();
-  }, delay); // TODO: change the setTimeout delay to the one provided as a parameter
+  }, delay);
+
   return timeoutID;
 }
 
@@ -194,7 +193,6 @@ function clearScore() {
   points = 0;
   // update score.textContent 
   score.textContent = points;
-  // return points;
   return points;
 }
 
@@ -204,13 +202,12 @@ function clearScore() {
 *
 */
 function updateTimer() {
-  if (time > 0){
+  if (time > 0) {
     time -= 1;
     timerDisplay.textContent = time;
   }
   return time;
 }
-
 /**
 *
 * Starts the timer using setInterval. For each 1000ms (1 second)
@@ -222,8 +219,6 @@ function startTimer() {
   return timer;
 }
 
-startTimer();
-
 /**
 *
 * This is the event handler that gets called when a player
@@ -233,13 +228,9 @@ startTimer();
 *
 */
 function whack(event) {
-  if (event && event.target) {
-    updateScore();
-    animateWhack(event.target);
-    return points;
-  } else {
-    console.error("Invalid or missing event object");
-  }
+  const mole = event.currentTarget;
+  updateScore();
+  animateWhack(mole);
 }
 
 /**
@@ -247,13 +238,14 @@ function whack(event) {
 * Adds the 'click' event listeners to the moles. See the instructions
 * for an example on how to set event listeners using a for loop.
 */
-function setEventListeners(){
-  moles.forEach((mole, index) => {
-    mole.addEventListener('click', whack)
-  });
+function setEventListeners() {
+  for (let i = 0; i < moles.length; i++) {
+    moles[i].addEventListener('click', whack);
+  }
   return moles;
 }
 
+setEventListeners();
 /**
 *
 * This function sets the duration of the game. The time limit, in seconds,
@@ -285,6 +277,7 @@ function stopGame(){
 */
 function startGame(){
   setDuration(10);
+  startTimer();
   setEventListeners();
   showUp();
   return "game started";
@@ -323,4 +316,4 @@ window.whack = whack;
 window.time = time;
 window.setDuration = setDuration;
 window.toggleVisibility = toggleVisibility;
-window.setEventListeners = setEventListeners;
+window.setEventListeners = setEventListeners
