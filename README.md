@@ -12,7 +12,7 @@ To get started with the game, follow these steps:
 
 # User Stories
 # US-01 - Basic game structure
-Add a title to the game, surrounded by h1 tags. Example: <h1 id="title"> Whack-a-Mole </h1>
+Add a title to the game, surrounded by h1 tags
 Add nine holes and moles to the grid in index.html.
 Define a start button in index.html.
 Use querySelector() to access elements in index.js.
