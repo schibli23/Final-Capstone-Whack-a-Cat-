@@ -229,7 +229,17 @@ function startTimer() {
 */
 function whack(event) {
   const mole = event.currentTarget;
-  updateScore();
+  const moleType = mole.dataset.type;
+
+  switch (moleType) {
+    case 'normal':
+      updateScore(1); // Normal moles give 1 point
+      break;
+    case 'bonus':
+      updateScore(3); // Bonus moles give 3 points
+      break;
+  }
+
   animateWhack(mole);
 }
 
