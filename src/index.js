@@ -75,7 +75,7 @@ function setDelay(difficulty) {
 function chooseHole(holes) {
   // TODO: Write your code here.
   // generate a random integer from 0 to 8 and assign it to an index variable
-  let index = Math.floor(Math.random() * hole.length);
+  let index = Math.floor(Math.random() * holes.length);
   // get a random hole with the random index (e.g. const hole = holes[index])
   const hole = holes[index];
   // if hole === lastHole call chooseHole(holes) again.
@@ -229,18 +229,9 @@ function startTimer() {
 */
 function whack(event) {
   const mole = event.currentTarget;
-  const moleType = mole.dataset.type;
-
-  switch (moleType) {
-    case 'normal':
-      updateScore(1); // Normal moles give 1 point
-      break;
-    case 'bonus':
-      updateScore(3); // Bonus moles give 3 points
-      break;
-  }
-
+  updateScore();
   animateWhack(mole);
+  playAudio(audioHit);
 }
 
 /**
@@ -274,7 +265,7 @@ function setDuration(duration) {
 *
 */
 function stopGame(){
-  // stopAudio(song);  //optional
+  stopAudio(song);  
   clearInterval(timer);
   return "game stopped";
 }
@@ -291,6 +282,7 @@ function startGame(){
   startTimer();
   setEventListeners();
   showUp();
+  loopAudio(song);
   return "game started";
 }
 
@@ -303,6 +295,27 @@ function animateWhack(mole){
   setTimeout(() => {
     mole.classList.remove('whacked');
   }, 500);
+}
+
+/* Added audio to Game*/
+const audioHit = new Audio("https://github.com/gabrielsanchez/erddiagram/blob/main/hit.mp3?raw=true");
+const song = new Audio("https://github.com/gabrielsanchez/erddiagram/blob/main/molesong.mp3?raw=true");
+
+function playAudio(audioObject) {
+  audioObject.play();
+}
+
+function loopAudio(audioObject) {
+  audioObject.loop = true;
+  playAudio(audioObject);
+}
+
+function stopAudio(audioObject) {
+  audioObject.pause();
+}
+
+function play(){
+  playAudio(song);
 }
 
 startButton.addEventListener("click", startGame);
